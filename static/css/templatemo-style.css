@@ -359,8 +359,8 @@ a:hover, a:active, a:focus {
   background: url('../images/home-img.jpg') no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  width: 100%;
-  height: 100vh;
+  width : 100%;
+  height : 100vh;
 }
 
 #home .home-thumb {
@@ -372,7 +372,7 @@ a:hover, a:active, a:focus {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100vh;
+  height : 100vh;
   padding: 0 45px 0 45px;
 }
 
@@ -395,7 +395,7 @@ a:hover, a:active, a:focus {
   background: #ffffff;
   border-radius: 0px;
   box-shadow: none;
-  height: 2px;
+  height : 2px;
 }
 
 #about .progress-bar-primary {
@@ -406,7 +406,7 @@ a:hover, a:active, a:focus {
 #about span {
   font-weight: bold;
   display: inline-block;
-  padding-bottom: 8px;
+  padding-bottom : 8px;
 }
 
 
