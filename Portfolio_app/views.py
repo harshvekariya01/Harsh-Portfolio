@@ -51,16 +51,17 @@ class home_view(TemplateView):
                         visitor.save()
                         print(visitor,'----------------')
 
-                        email_text = f""" name : {FullName}
-                                          email : {Email_ID}
-                                          Subject : {Subject}
-                                          Message : {Message}
-                                       """
-                        email_textc = f"""Thank you {FullName}
-                                    I will contact you shortly
-                                    Regards,
-                                    Harsh Vekariya
-                                    """
+                        email_text = f"""
+                        name : {FullName}
+                        email : {Email_ID}
+                        Subject : {Subject}
+                        Message : {Message}"""
+
+                        email_textc = f"""
+                        Thank you {FullName}
+                        I will contact you shortly
+                        Regards,
+                        Harsh Vekariya"""
 
                         recipientsc = [visitor.email]
                         recipients = ["vekariyaharsh01@gmail.com"]
