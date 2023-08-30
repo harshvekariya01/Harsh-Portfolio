@@ -79,9 +79,9 @@ http://www.templatemo.com/tm-498-stimulus
                               <h4 class="wow fadeInUp" data-wow-delay="0.3s" style="margin-top : 20%;">welcome to my Portfolio</h4>
                               <h1 class="wow fadeInUp" data-wow-delay="0.6s">Hello, I am <strong style="color: seagreen">Harsh Vekariya</strong></h1>
                               <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>E-mail :</strong> <a href="mailto:vekariyaharsh01@gmail.com" style="color: #888;">vekariyaharsh01@gmail.com</a></p>      
-                              <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Mobile No :</strong> +91 9586549727</p>      
+                              <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Mobile No :</strong> +919586549727</p>      
                               <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Birth-Date :</strong> 25-March 2002</p>      
-                              <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Age :</strong> 21</p>      
+                              <!-- <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Age :</strong> 21</p>       -->
                               <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Gender :</strong> Male</p>      
                               <p class="wow fadeInUp" data-wow-delay="0.9s"><strong>Lives In :</strong> Ahmedabad, Gujarat</p>      
                               <a href="{% static 'Harsh_Vekariya_Resume.pdf' %}" target="#" class="wow fadeInUp smoothScroll section-btn btn btn-success" data-wow-delay="1.4s">Download cv</a>
@@ -281,7 +281,7 @@ http://www.templatemo.com/tm-498-stimulus
                               <div class="media-body">
                                    <h3 class="media-heading">SLICK SERVICES &nbsp; <small>Jr. Python Developer</small></h3>
                                    <p class="color-white">January 2023 - Present</p>
-                                   <p class="color-white">8 months of experience as a Python Django Developer at <a href="https://www.slickservices.in/" target="blank" style="color: rgb(3, 3, 3);">SLICK SERVICES</a> AHMEDABAD.</p>
+                                   <p class="color-white">8 months of experience as a Python Django Developer at <a href="https://www.slickservices.in/" target="blank" style="color: rgb(247, 244, 244);">&nbsp;SLICK SERVICES&nbsp; </a>AHMEDABAD.</p>
                               </div>
                          </div>
 
@@ -436,20 +436,24 @@ http://www.templatemo.com/tm-498-stimulus
                               <a href="mailto:vekariyaharsh01@gmail.com"><h1 class="color-white">Say hello..</h1></a>
                          </div>
                          <div id="contact-form text-center">
+                              <h3>{{dict}}</h3>
                               <form action="{%url 'Portfolio_app:home_view'%}" method="post">
                                    {%csrf_token%}
                                    <div class="wow fadeInUp" data-wow-delay="1s">
-                                        <input name="name" type="text" class="form-control" id="fullname" placeholder="Your Name">
+                                        <input name="name" type="text" class="form-control" id="fullname" placeholder="Your Name" required>
                                    </div>
                                    <div class="wow fadeInUp" data-wow-delay="1.2s">
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input name="email" type="email" class="form-control" id="email" placeholder="Your Email" required>
                                    </div>
                                    <div class="wow fadeInUp" data-wow-delay="1.2s">
-                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Your Subject">
+                                        <input name="phone" type="text" class="form-control" id="email" placeholder="Your phone" required>
                                    </div>
-               
+                                   <div class="wow fadeInUp" data-wow-delay="1.2s">
+                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Your Subject" required>
+                                   </div>
+
                                    <div class="wow fadeInUp" data-wow-delay="1.4s">
-                                        <textarea name="message" rows="1" class="form-control" id="message" placeholder="Write your message..."></textarea>
+                                        <textarea name="message" rows="1" class="form-control" id="message" placeholder="Write your message..." required></textarea>
                                    </div>
                                    <div class="wow fadeInUp col-md-6 col-sm-8" data-wow-delay="1.6s">
                                         <input name="submit" type="submit" class="form-control" id="submit" value="Send">
