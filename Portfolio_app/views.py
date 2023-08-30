@@ -19,7 +19,6 @@ class home_view(TemplateView):
         context = super().get_context_data(**kwargs)
         return context
 
-
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         
@@ -27,45 +26,37 @@ class home_view(TemplateView):
             form_error = False
             FullName = request.POST.get('name', None)
             Email_ID = request.POST.get('email', None)
+            phone = request.POST.get('phone', None)
             Subject = request.POST.get('subject', None)
             Message = request.POST.get('message', None)
 
+            if FullName and Email_ID and phone and Subject and Message:
 
-            regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
-            
-
-            if FullName in ['', None] or Subject in ['', None] or Message in ['', None]:
-                messages.error(request, "All fields are  required..")
-                form_error = True
-                
-
-            else:
-
+                regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
                 if not(re.search(regex,Email_ID)):
-                    form_error = True
-                    messages.error(request, "Please enter valid email address!")
+                    dicts = {'message': "Please enter valid email address!"}
+                    return render(request,'index.html',{'dict':dicts['message']})
+                    # form_error = True
+                    # messages.error(request, "Please enter valid email address!")
                 
                 else:
                     if not(form_error):
-                        visitor = visitorquery(name = FullName,email = Email_ID, subject = Subject, message = Message)
+                        visitor = visitorquery(name = FullName,email = Email_ID,phone = phone, subject = Subject, message = Message)
                         visitor.save()
-                        print(visitor,'----------------')
 
-                        email_text = f""" name : {FullName}
-                                          email : {Email_ID}
-                                          Subject : {Subject}
-                                          Message : {Message}
-                                       """
-                        email_textc = f"""Thank you {FullName}
-                                    I will contact you shortly
-                                    Regards,
-                                    Harsh Vekariya
-                                    """
+                        email_text = '<p>Name : {}</p>'.format(FullName)
+                        email_text += '<p>Email : {}</p>'.format(Email_ID)
+                        email_text += '<p>Phone : <a href="tel:{}">{}</a></p>'.format(phone,phone)
+                        email_text += '<p>Subject : {}</p>'.format(Subject)
+                        email_text += '<p>Message : {}</p>'.format(Message)
+                        
+                        email_textc ='<p>Thank You {}</p>'.format(FullName)
+                        email_textc += '<p>I will contacy shortly<br/><br/>Regards,<br/>Harsh Vekariya<br/>You can contact me on <a href="tel:9586549727">9586549727</a></p>'
 
                         recipientsc = [visitor.email]
                         recipients = ["vekariyaharsh01@gmail.com"]
-                        msg = MIMEText(email_text)
-                        msgc = MIMEText(email_textc)
+                        msg = MIMEText(email_text, 'html')
+                        msgc = MIMEText(email_textc, 'html')
                         msg["Subject"] = "Harsh Portfolio"
                         msgc["Subject"] = "Harsh Vekariya"
                         msg["From"] = visitor.email
@@ -76,5 +67,8 @@ class home_view(TemplateView):
                         smtp_server.sendmail(visitor.email, recipientsc, msgc.as_string())
                         smtp_server.quit()
                         return redirect('Portfolio_app:home_view')
+            else:
+                dicts = {'message': "All fields are  required.."}
+                return render(request,'index.html',{'dict':dicts['message']})
 
  
