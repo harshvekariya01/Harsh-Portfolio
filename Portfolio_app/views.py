@@ -51,7 +51,7 @@ class home_view(TemplateView):
                         email_text += '<p>Message : {}</p>'.format(Message)
                         
                         email_textc ='<p>Thank You {}</p>'.format(FullName)
-                        email_textc += '<p>I will contacy shortly<br/><br/>Regards,<br/>Harsh Vekariya<br/>You can contact me on <a href="tel:9586549727">9586549727</a></p>'
+                        email_textc += '<p>I will contact you shortly. when you feel free you can contact me on given number <a href="tel:9586549727">9586549727</a><br/><br/>Thanks & Regards,<br/>Harsh Vekariya</p>'
 
                         recipientsc = [visitor.email]
                         recipients = ["vekariyaharsh01@gmail.com"]
