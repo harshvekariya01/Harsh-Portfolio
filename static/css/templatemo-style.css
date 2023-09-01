@@ -127,7 +127,7 @@ ul {
 }
 
 .burger {
-  height: 15vh;
+  /* height: 15vh; */
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -189,9 +189,7 @@ ul {
           transform: rotate(45deg) translate(-7px, 7px) scaleX(0.7);
 }
 @media (max-width: 640px) {
-  .burger {
-    height: 10vh;
-  }
+  
   .burger__patty {
     -webkit-transform: scale(0.8);
             transform: scale(0.8);
@@ -353,10 +351,12 @@ ul {
 .home-content .left-text p {
 	color: #fff;
 	margin-bottom: 25px;
+  
 }
 
 .home-content .right-image {
 	float: right; 
+  
 }
 
 
